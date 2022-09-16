@@ -1,0 +1,1157 @@
+/*Правила, применяемые ко всем элементам на странице*/
+*{
+	margin: 0;
+	padding: 0;
+    box-sizing: border-box;/*Расчет ширины и высоты элемента с учетом отступов*/
+}
+/*Параметры по умолчанию для всех елементов внуритри тела сайта*/
+body{
+	font-family: Areal, sans-serif;
+	font-weight: normal;
+	font-size: 16px;
+	color: #000000;
+	background: #ffffff;
+}
+/*Убирание полос прокрутки, при открытии определенных элементов*/
+body.pop_up_open{
+    overflow: hidden;
+}
+/*Расположение всего содержимого в центре страницы*/
+.container{
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+/*Шапка сайта занимает всю видимую область и текст располагается по центру*/
+header{
+	position: relative;
+	height: 100vh;
+	background: url("img/headerimg.jpg") no-repeat;
+	background-size: cover;/*Заполнение картинкой всего контейнера, не растягивая или сжммая ее*/
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+/*Градиент, который наложен поверх картинки в шапке сайта*/
+.gradient{
+	background: linear-gradient(to bottom, rgba(0,0,0,0.40), rgba(0,0,0,0.50));
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+/*Текст в шапке сайта расположен по центру*/
+.content{
+	position: relative;
+	text-align: center;
+	color: #ffffff;
+}
+/*Заголовок шапки*/
+header h1{
+	padding-bottom: 38px;
+	font-size: 72px;
+    letter-spacing: 0.5px;/*Расстояне между буквами*/
+}
+/*Текст шапки*/
+header p{
+	max-width: 700px;
+	font-size: 24px;
+	margin: 0 auto;
+}
+/*Стрелочка*/
+.arrow-svg{
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	margin-left: -20px;
+	fill:#ffffff;
+	width: 40px;
+	height: 20px;
+	animation: arrow-svg 1.7s linear infinite;/*Ровное бесконечное движение продолжающееся 1.7 сек*/
+	cursor: pointer;
+}
+/*Стрелочка тускнееет при наведении*/
+.arrow-svg:hover{
+	opacity: 0.3;
+}
+/*Ключевые кадры анимации*/
+@keyframes arrow-svg {
+    /*Стрелочка опускается на 7 пикселей, немного задерживается и поднимается в исходное положение*/
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(7px);
+    }
+    55% {
+        transform: translateY(7px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+/*Блок с текстом, рассказывающим о назначении сайта, занимает всю видимую область и текст располагается по центру*/
+.promo{
+	height: 100vh;
+	background: url("img/promo.png") no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+/*Текст, рассказывающий о назначении сайта*/
+.promo-text{
+	font-size: 26px;
+	margin-bottom: 40px;
+	line-height: 1.55;
+	letter-spacing: 0.5px;
+}
+/*Убиранние отступа у последнего абзаца*/
+.promo-text:last-child{
+	margin-bottom: 0;
+}
+/*Меню, которое появляется при переходе к основной части сайта*/
+nav{
+	display: table;
+	height: 95px;
+	padding: 0 40px;
+	background: #ffffff;
+	width: 100%;
+	box-shadow: 0px 1px 3px rgb(0 0 0 / 10%);/*Тень под меню*/
+	visibility: hidden;/*Курсор не реагирует*/
+	opacity: 0;
+	position: fixed;/*Зафиксировано в верху страницы*/
+	top: 0;
+	left: 0;
+	transition: all .3s ease;/*Появление за 0.3 сек, которое начинается медленно, в середине быстро, а к концу замедлятся*/
+	z-index: 1;
+}	
+/*Появление меню, постепенное проявление и выпадение сверху*/
+nav.out {
+	visibility: visible;
+	opacity: 1;
+    top: 95px;
+	transform: translateY(-100%);
+}
+/*Логотип в меню, расположенный по центру*/
+nav .logo{
+    display: table-cell;
+    vertical-align: middle;
+}
+/*Картинка логотипа*/
+.logo img{
+	width: 140px;
+    height: auto;
+}
+/*Меню, расположенное по центру*/
+nav .menu{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+    width: 100%;
+}
+/*Убирание стиля по умолчанию у списка в меню*/
+.menu ul{
+	list-style: none;
+}
+/*Пункты меню, расположены горизонтально*/
+.menu li{
+	display: inline-block;
+	padding-left: 15px;
+    padding-right: 15px;
+    margin: 0;
+    clear: both;    
+}
+/*Убирание отступа у последнего пункта меню*/
+.menu li:last-child{
+	margin-right: 0;
+}
+/*Ссылка в пункте мнею*/
+.menu a{
+	color: #000000;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	text-decoration: none;/*Убирание подчеркивания у ссылки*/
+	position: relative;
+}
+/*Ссылка при наведении меняет цвет*/
+.menu a:hover{
+	color: #f0e632;
+}
+/*Появление подчеркивания при наведении*/
+.menu a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 20%;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #f0e632;
+    box-shadow: inset 0px -1px 0px 0px #f0e632;/*Тень*/
+    transition: all .3s ease;/*Появление за 0.3 сек, которое начинается медленно, в середине быстро, а к концу замедлятся*/
+}
+/*Появление подчеркивания, постепенное проявление и выпадение сверху*/
+.menu a:hover::after{
+	opacity: 1;
+	bottom: -2px;
+}
+/*Ссылка меняет цвет, показывая в каком разделе сайта находится пользователь*/
+.menu a.active{
+	color: #f0e632;
+}
+/*Блок товаров*/
+section{
+	padding-top: 120px;
+    padding-bottom: 100px;
+    background: #f5f5f5;
+}
+
+section:nth-child(2n){
+    background: #ffffff;
+}
+
+/*Расположение всего содержимого в центре страницы*/
+section .container, footer .container{
+	max-width: 1200px;
+	padding: 0;
+}
+/*Заголовок блока товаров*/
+section h2{
+	text-align: center;
+    margin-top: 44px;
+    margin-bottom: 54px;
+	font-size: 54px;
+	font-weight: 700;
+    line-height: 0.5;
+    position: relative;
+    letter-spacing: 3px;
+}
+/*Декоративные линии сверху и снизу заголовока*/
+section h2:before, section h2:after{
+	content: '';
+    position: absolute;
+    left: 44%;
+    top: -45px;
+    width: 100%;
+    max-width: 140px;
+    border-bottom: 1px solid #92d050;
+}
+/*Изменение положения нижней линии*/
+section h2:after{
+    bottom: -53px;
+}
+/*Блок товаров*/
+.block{
+    padding-top: 60px;
+}
+/*Блок товара*/
+.block_item{
+	max-width: 360px;
+	text-align: center;
+    margin-left: 18.5px;
+    margin-right: 18.5px;
+    width: 100%;
+	display: inline-block;
+	margin-bottom: 90px;
+}
+/*Блок картинки товара*/
+.block_item_img{
+	width: 360px;
+	height: 400px;
+	margin-bottom: 20px;
+    overflow: hidden; /*Содержимое, выступающие за границы, обрезается, без предоставления прокрутки*/
+}
+/*Картинка товара*/
+.block_item_img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /*Тоже что и background-size: cover, только для тега img*/
+}
+/*Заголовок блока товара*/
+.block_item h3{
+	font-weight: 700;
+	font-size: 20px;
+    line-height: 1.35;
+}
+/*Описание блока товара*/
+.block_item p{
+	margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.55;
+}
+/*Цена товара*/
+.block_item .price{
+    margin-top: 12px;
+	font-size: 16px;
+    line-height: 1.35;/**/
+}
+/*Кнопки в блоке товара*/
+.button{
+	display: inline-block;
+	color: #ffffff;
+    background-color: #92d050;
+    border-radius: 5px;
+    height: 45px;
+    width: 145px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 19px 2px 8px 2px;
+    padding-top: 15px;
+    cursor: pointer;
+    text-align: center;
+}
+/*Изменение стилей для кнопки добавления в корзину*/
+.cart{
+	color: #000000;
+	background-color: #f5f5f5;
+	border: 1px solid #000000;
+}
+/*Изменение цвета кнопки при наведениии*/
+.button:hover{
+	background-color: #f0e632;
+	transition: background-color 0.2s ease-in-out;/*Изменение цвета за 0.2 сек, которое начинается и заканчивается медленно*/
+}
+/*Подвал сайта*/
+footer{
+	padding-top: 150px;
+    padding-bottom: 150px;
+    color: #ffffff;
+    background-color: #000000;
+    text-align: center;
+}
+/*Заголовок подвала сайта*/
+footer h2{
+	font-size: 56px;
+	padding-top: 8px;
+    padding-bottom: 3px;
+    line-height: 1.23;
+    font-weight: 600;
+}
+/*Текст подвала сайта*/
+.contacts_text{
+	max-width: 560px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 105px;
+	font-size: 24px;
+	margin-top: 41px;
+	line-height: 1.45;
+}
+/*Элементы в подвале сайта*/
+.footer_item{
+	display: inline-block;
+	width: 100%;
+	max-width: 360px;
+	vertical-align: top;
+	margin-left: 18.5px;
+    margin-right: 18.5px;
+}
+/*Картинка элемента*/
+.footer_item img{
+	margin-bottom: 30px;
+    width: 60px;
+    height: auto;
+}
+/*Заголовок элемента*/
+.footer_item h3{
+	font-size: 24px;
+	padding-bottom: 20px;
+	line-height: 1.35;
+	font-weight: 600;
+}
+/*Текст элемента*/
+.footer_item p{
+	font-size: 14px;
+	line-height: 1.55;
+}
+/*Ссылки на соц сети*/
+.footer_item a{
+	color: #ffffff;
+	text-decoration: none;
+	cursor: pointer;
+}
+/*Подчеркивание ссылки при наведении*/
+.footer_item a:hover{
+	text-decoration: underline;
+}
+/*Тускнение ссылки при нажатии*/
+.footer_item a:active{
+	opacity: 0.3;
+}
+/*Всплывающие окна*/
+.pop_up, .shopping_cart{
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;/*Появление вртикальной полосы прокрутки при необходимости*/
+    overflow-x: hidden;/*Скрытие горизонтальной полосы прокрутки*/
+    opacity: 0;
+    transition: opacity .3s ease-in-out;/*Проявление за 0.3 сек*/
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    background-color: #ffffff;
+    z-index: 2;
+    pointer-events: none;/*Отключение реакции на курсор*/
+    cursor: default;
+}
+/*Изменение заднего фона у корзины*/
+.shopping_cart{
+	background-color: rgba(0,0,0,.8);
+}
+/*Проявление всплывающего окна и возвращение реакции на курсор*/
+.pop_up.active, .shopping_cart.active{
+	opacity: 1;
+	pointer-events: inherit;
+}
+/*Тело всплывающего окна*/
+.pop_up_body{
+	position: relative;
+	top: 0;
+    left: auto;
+    right: auto;
+    padding: 40px 20px;
+	margin: 65px auto;
+    width: 100%;
+    max-width: 1240px;
+    background-color: #f5f5f5;
+    opacity: 0;
+    transition: all ease-in-out .3s;
+    transform: translateY(30%) scale(.9);/*Смещение вниз и уменьшение размера*/
+}
+/*Проявление и возврат в исходное положение и размер тела всплывающего окна*/
+.pop_up_body.active{
+	opacity: 1;
+	transform: translateY(0%) scale(1);
+}
+/*Область вокруг всплывающего окна, при нажатии на которую, оно закрывается*/
+.pop_up_area, .shopping_cart_area{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	right: 20px;
+    top: 0px;
+    cursor: pointer;
+}
+/*Знак Х для закрытия всплывающего окна*/
+.close_pop_up, .close_shopping_cart{
+	position: fixed;
+    right: 30px;
+    top: 0px;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    z-index: 2;
+    font-size: 34px;   
+}
+/*Изменение цвета знака Х для корзины*/
+.close_shopping_cart{
+	color: #ffffff;
+}
+/*Блок картинки внутри всплывающего окна*/
+.pop_up_img{
+	margin-left: 20px;
+    margin-right: 35px;
+    overflow: hidden;
+    height: 560px;
+    width: 46%;
+    display: inline-block;
+}
+/*Картинка внутри всплывающего окна*/
+.pop_up_img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/*Блок с текстом внутри всплывающего окна*/
+.pop_up_info{
+	vertical-align: top;
+	display: inline-block;
+    max-width: 46%;
+}
+/*Заголовок всплывающего окна*/
+.pop_up_info h3{
+	font-weight: 700;
+	font-size: 24px;
+    line-height: 1.35;
+    margin-bottom: 18px;
+}
+/*Цена товара внутри всплывающего окна*/
+.pop_up_info .price{
+	font-size: 16px;
+    line-height: 1.35;
+}
+/*Текст всплывающего окна*/
+.pop_up_info p{
+	margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.55;
+}
+/*Списки внутри всплывающего окна*/
+.pop_up_info ul, .pop_up_info ol{
+	padding-left: 20px;
+	line-height: 1.55;
+}
+/*Корзина*/
+.shopping_cart_body{
+	position: relative;
+    padding: 40px;
+	margin: 65px auto;
+    width: 100%;
+    max-width: 560px;
+    min-height: 300px;
+    background-color: #ffffff;
+    overflow: auto;
+}
+/*Заголовок корзины*/
+.shopping_cart_body h3{
+	font-weight: 700;
+	font-size: 24px;
+    line-height: 1.35;
+    margin-bottom: 30px;
+}
+/*Блок с товарами в корзине, обрамленный сверзу и снизу*/
+.shopping_cart_products{
+	display: table;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,.2); 
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+/*Блок товара в корзине*/
+.shopping_cart_product{
+	display: table;
+    width: 100%;
+    height: 50px;
+    vertical-align: middle;
+}
+/*Блок картики в блоке товара*/
+.product_img{
+	display: table-cell;
+    width: 70px;
+    height: 100px;
+    padding-right: 20px;
+    vertical-align: middle;
+}
+/*Картика в блоке товара*/
+.product_img img{
+	width: 70px;
+    height: 70px;
+    background-size: cover;
+    border-radius: 7px;
+    background-color: #eeeeee;
+    background-position: center;
+}
+/*Название товара*/
+.product_name{
+	display: table-cell;
+    font-size: 16px;
+    padding: 15px 0;
+    font-weight: 600;
+    vertical-align: middle;
+    color: #000000;
+}
+/*Количество товара*/
+.product_quantity{
+	display: table-cell;
+    width: 80px;
+    padding: 13px 20px 16px;
+    padding-left: 10px;
+    vertical-align: middle;
+    color: #000000;
+    white-space: nowrap;/*Запрещение перненоса строки*/
+}
+/*Знаки - и + для изменения количества товара*/
+.product_quantity .minus, .product_quantity .plus{
+	display: inline-block;
+    cursor: pointer;
+    opacity: 0.4;
+    width: 16px;
+    height: 16px;
+}
+/*Текст, отображающий количество товара*/
+.product_quantity span{
+	font-size: 16px;
+    line-height: 16px;
+    margin: 0 5px;
+    padding: 2px 5px;
+    color: #000000;
+}
+/*Цена товара*/
+.product_price{
+	display: table-cell;
+    width: 80px;
+    font-size: 16px;
+    padding: 15px 0;
+    vertical-align: middle;
+    color: #000000;
+    white-space: nowrap;
+}
+/*Знак х для удаления товара*/
+.product_delete{
+	display: table-cell;
+    width: 20px;
+    padding: 15px 0 15px 15px;
+    cursor: pointer;
+    opacity: 0.4;
+    vertical-align: middle;
+}
+/*Увеличение яркости элементов +, - и х при наведении*/
+.product_quantity .minus:hover, .product_quantity .plus:hover, .product_delete:hover{
+	opacity: 1;
+}
+/*Общая сумма заказа*/
+.shopping_cart_total{
+	padding-top: 30px;
+	padding-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.55;
+    text-align: right;
+    font-weight: 600;
+    color: #000000;
+}
+/*Форма заказа*/
+.shopping_cart_body form{
+	margin-top: 20px;
+    margin-bottom: 20px;
+}
+/*Текстовые поля в форме*/
+.shopping_cart_body form input[type="text"], .shopping_cart_body form textarea{
+	margin: 0;
+	margin-bottom: 20px;
+	height: 56px;
+    width: 100%;
+	color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
+    outline: none; /*Убирание рамки по умолчанию вокруг элемента*/
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 1.33;
+    font-family: Areal, sans-serif; 
+}
+/*Задание особых стилей для поля с комментарием к заказу*/
+.shopping_cart_body form textarea{
+	min-height: 100px;
+    resize: none;/*Запрещение изменения размеров поля*/
+    padding: 10px 20px;
+}
+/*Подписи над текстовыми полями*/
+.shopping_cart_body form label{
+	font-size: 16px;
+	padding-bottom: 5px;
+	display: block;
+    vertical-align: middle;
+    height: 100%;
+    padding-right: 10px;
+    line-height: 1.55;
+}
+/*Блок ошибок, при заполнении формы*/
+.shopping_cart_body .errorbox{
+	display: none;/*По умолчанию скрыто*/
+	margin-top: 15px;
+	background: #F95D51;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/*Блок текста ошибки*/
+.shopping_cart_body .errorbox_text{
+	font-size: 18px;
+    line-height: 1.55;
+	color: #ffffff;
+    padding: 0 10px 10px 10px;
+}
+/*Текст ошибки*/
+.errorbox_text p{
+	display: none;/*По умолчанию скрыто*/
+	padding-top: 10px;
+}
+/*Появление текста ошибки*/
+.errorbox_text p.active{
+	display: block;
+}
+/*Добавление красной рамки у текстового поля, в котором допущена ошибка*/
+.shopping_cart_body form .input_error{
+	border: 1px solid #ff6047!important;
+	margin-bottom: 0px!important;
+}
+/*Тестт под текстовым полем, в котором допущена ошибка*/
+.shopping_cart_body form .input_error_text{
+    color: #ff6047;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+/*Кнопка отправки заказа*/
+.shopping_cart_button{
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    background-color: #000000;
+    border: 0 none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+/*Ссобщение об отправке формы или ошибке*/
+.form_success, .form_error{
+    padding-top: 70px;
+    padding-bottom: 70px;
+    text-align: center;
+    background: #62C584;
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+/*Ссобщение об ошибке*/
+.form_error{
+    background: #F95D51;
+}
+/*Блок отмены удаления товара*/
+.product_deleted{
+	display: table;
+	width: 100%;
+	height: 100px;
+}
+/*Тело блока отмены удаления*/
+.product_deleted_body{
+	display: table-cell;
+	vertical-align: middle;
+}
+/*Блок таймера*/
+.product_deleted_timer{
+	display: flex;
+	font-size: 14px;
+}
+/*Блок с названием товара и счетчиком, элементы в котором выравнены по поценру*/
+.timer_left{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex: 1;
+}
+/*Блок счетчика, элементы в котором, выравнены по центру*/
+.timer_counter{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin-right: 15px;
+	min-width: 24px;
+	min-height: 24px;
+	line-height: 24px;
+}
+/*Название удаляемого товара*/
+.timer_title{
+	color: #000000;
+    opacity: 0.6;
+}
+/*Счетчик*/
+.timer_counter_number{
+	display: block;
+	font-weight: 600;
+	font-size: 15px;
+	color: #f95d51;
+	width: 24px;
+	text-align: center;
+}
+/*Кург счетчика*/
+.timer_counter_circle{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: rotate(90deg) scaleX(-1);/*Круг начинается вверху элемента*/
+}
+/*SVG круг*/
+.timer_counter_circle circle{
+	stroke-dasharray: 100; /*Полная обводка круга без пробелов*/
+	stroke-dashoffset: 0; /*Нет смещения у обводки*/
+	stroke-linecap: round; /*Круглые конца у линии*/
+	stroke-width: 2px;
+	stroke: #f95d51;
+	fill: none;
+	animation: timer_counter_circle 4s linear infinite;/*Анимация длится 4 сек, равномерная скорость*/
+}
+/*Изменение смещения обводки*/
+@keyframes timer_counter_circle{
+	0%{
+		stroke-dashoffset: 35;
+	}
+	100%{
+		stroke-dashoffset: 102;
+	}
+}
+/*Кнопка для возвращения товара*/
+.timer_return{
+	display: inline-flex;
+	align-items: center;
+	transition: opacity .1s ease;
+	cursor: pointer;
+	margin-left: 15px;
+	color: #000000;
+    opacity: 0.6;
+}
+/*Увеличение яркости при наведении*/
+.timer_return:hover{
+	opacity: 1;
+}
+/*Иконка корзины товаров, которая появляется если в корзине есть товары*/
+.carticon{
+	display: none;
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    z-index: 4;
+}
+/*Появление иконки*/
+.carticon.active{
+	display: block;
+}
+/*Текст, который появлется при наведении на иконку*/
+.carticon_text{
+	position: absolute;
+    transform: translateX(0%) translateY(-50%);
+    top: 50%;
+    right: 130%;
+    white-space: nowrap;
+    background: #292929;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.35;
+    padding: 9px 13px;
+    border-radius: 3px;
+    transition: opacity 0.3s linear;
+    opacity: 0;
+    pointer-events: none;
+}
+/*Повернутый квадрат, имметирующий стрелку у появляющегося текста*/
+.carticon:hover .carticon_text::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #292929;
+    transform: rotate(45deg);
+}
+/*Появление текста*/
+.carticon:hover .carticon_text{
+	opacity: 1;
+    pointer-events: pointer;
+}
+/*Блок с конетнтом иконки*/
+.carticon_wrapper{
+    position: relative;
+}
+/*Картинка иконки*/
+.carticon_img{
+    position: relative;
+    background-color: rgba(255,255,255,.8);
+    border-radius: 50px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+    will-change: transform; /*Заранее сообщает браузеру про анимацию, кторая в итоге плавнее получается*/
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden;
+}
+/*Увеличение размера иконки при наведении*/
+.carticon_img:hover{
+    transform: scale(1.1);
+}
+/*SVG картинка*/
+.carticon_img svg{
+    padding: 18px 20px 22px;
+}
+/*Блок, отображающий количество товаров в корзине*/
+.carticon_counter{
+    width: 30px;
+    height: 30px;
+    background-color: #ff6047;
+    color: #ffffff;
+    border-radius: 30px;
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    text-align: center;
+    line-height: 30px;
+}
+/*Различные несущественные изменения у элементов, напиример отстпов или размеров шриштов, для их адаптации под ширину экрана меньше 1216 пикселей*/
+@media screen and (max-width: 1216px){
+    .container{
+        max-width: 970px;
+    }
+    section .container, footer .container {
+        max-width: 970px;
+    }
+    nav{
+        padding: 0 10px;
+    }
+    .logo img{
+        width: 120px;
+    }
+    .menu li{
+        padding-left: 10px;
+        padding-right: 10px;   
+    }
+    .menu a{
+        font-size: 14px;
+    }
+    .block_item {
+        max-width: 300px;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .block_item_img{
+        width: 300px;
+        height: 330px;
+        margin-bottom: 20px;
+    }
+    .block_item h3{
+        font-size: 18px;
+    }
+    .block_item p{
+        font-size: 12px;
+    }
+    .block_item .price{
+        font-size: 14px;
+    }
+    .button{    
+        width: 140px;
+    }
+    .pop_up_body{
+        padding: 40px 10px;
+    }
+    .pop_up_img{
+        margin-left: 5px;
+        margin-right: 25px;
+        height: 450px;
+        width: 46%;
+    }
+    .pop_up_info{
+        max-width: 46%;
+    }
+    .pop_up_info h3{
+        font-size: 22px;
+    }
+    .pop_up_info ul, .pop_up_info ol{
+        padding-left: 10px;
+    }
+}
+/*Адаптация элементов под ширину экрана меньше 983 пикселей*/
+@media screen and (max-width: 983px){
+	.container{
+        max-width: 640px;
+    }
+    section .container, footer .container {
+        max-width: 640px;
+    }
+    section h2:before, section h2:after{
+    	left: 40%;
+	}
+    .promo-text {
+    	font-size: 24px;
+    	margin-bottom: 30px;
+    }
+    .block_item {
+        max-width: 280px;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-bottom: 70px;
+    }
+    .block_item_img{
+        width: 280px;
+        height: 310px;
+    }
+    .block_item p {
+    	margin-bottom: 12px;
+    }
+    .block_item .price {
+    	margin-top: 0;
+    	margin-bottom: 12px;
+	}
+    .button{    
+        width: 145px;
+        margin: 8px 2px 0px 2px;
+    }
+    /*Изменение вида меню*/
+    .menu_mobile{
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background: #000000;
+		height: 60px;
+		visibility: hidden;
+		opacity: 0;
+		transition: all .3s ease;
+		z-index: 1;
+    }
+    /*Появление меню*/
+	.menu_mobile.out{
+		visibility: visible;
+		opacity: 1;
+		transform: translateY(-100%);
+		top: 60px;
+	}
+    /*Кнопка, при нажатии на которую появляются пункты меню*/
+    .burger{
+    	position: absolute;
+	    top: 50%;
+    	margin-top: -10px;
+	    right: 20px;
+    	width: 28px;
+	    height: 20px;
+	    transform: rotate(0deg);
+    	transition: all .5s ease-in-out;
+   		cursor: pointer;
+    }
+    /*Полосы, сосоатвляющие кнопку*/
+    .burger span{
+    	display: block;
+	    position: absolute;
+    	width: 100%;
+	    opacity: 1;
+	    left: 0;
+        transform: rotate(0deg);
+    	transition: all .25s ease-in-out;
+	    height: 3px;
+    	background-color: #ffffff;
+   	}
+    /*Размещение полос*/
+   	.burger span:nth-child(1){
+    	top: 0;
+	}
+	.burger span:nth-child(2), .burger span:nth-child(3){
+    	top: 8px;
+	}
+	.burger span:nth-child(4){
+    	top: 16px;
+	}
+    /*Изменение положения полос при открытии меню*/
+   	.menu_mobile.open .burger span:nth-child(1), .menu_mobile.open .burger span:nth-child(4){
+    	top: 8px;
+    	width: 0;
+    	left: 50%;
+	}
+	.menu_mobile.open .burger span:nth-child(2){
+    	transform: rotate(45deg);
+	}
+	.menu_mobile.open .burger span:nth-child(3){
+    	transform: rotate(-45deg);
+	}
+    /*Скрытие пунктов меню и изменение их расположения*/
+	nav, nav.out{
+		visibility: hidden;
+    	opacity: 0;
+		height: 100vh;
+    	top: 60px;
+    	transform: translateY(0);
+	}
+    /*Появление пунктов меню*/
+	nav.open{
+		visibility: visible;
+    	opacity: 1;
+	}
+    /*Изменение расположения элементов меню*/
+	nav .logo, nav .menu{
+		display: block;
+    	text-align: center;
+    	padding: 30px 0;
+    }
+    /*Скрытие списка пунктов меню и изменение его расположения*/
+	.menu ul{
+		list-style-type: none;
+    	margin: 0;
+    	padding: 0!important;
+    	opacity: 0;
+    	transition: opacity ease-in-out .2s;
+	}
+    /*Появление спика пунктов*/
+	.menu ul.open{
+		opacity: 1;
+	}
+    /*Изменение расположения пунктов меню*/
+	.menu li{
+		display: block;
+    	text-align: center;
+    	padding: 10px!important;
+    	white-space: normal;
+	}
+}
+/*Адаптация элементов под ширину экрана меньше 670 пикселей*/
+@media screen and (max-width: 670px){
+	.container{
+        max-width: 475px;
+    }
+    section .container, footer .container {
+        max-width: 475px;
+    }
+	header p, .contacts_text {
+		font-size: 14px;
+		max-width: 460px;
+		line-height: 1.5;
+	}
+	header h1, section h2, footer h2 {
+		font-size: 32px;
+	}
+	section h2:before, section h2:after{
+    	left: 35%;
+	}
+	.promo-text {
+    	font-size: 20px;
+    }
+     .block_item{
+        max-width: 210px;
+    }
+    .block_item_img{
+        width: 210px;
+        height: 230px;
+    }
+    .button{
+    	width: 100%;
+	}
+    .footer_item {
+    	margin-bottom: 40px
+    }
+    .footer_item h3 {
+    	font-size: 20px;
+	}
+	.pop_up_body {
+    	padding: 20px 10px;
+	}
+	.pop_up_img{
+		display: block;
+    	width: 100%;
+    	margin-left: 0;
+    	margin-right: 0;
+    	margin-bottom: 30px;
+	}
+	.pop_up_info{
+		display: block;
+    	max-width: 100%;
+    }
+    .pop_up_info ul, .pop_up_info ol{
+        padding-left: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+    

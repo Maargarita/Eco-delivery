@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru"> 
+<head>
+
+	<meta charset="utf-8"><!--Кодировка-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!--Ширина окна приравнивается к ширине устройсва-->
+	<title>Эко-доставка</title><!--Заголовок вкладки-->
+	<link rel="shortcut icon" href="img/logoicon.ico" type="image/x-icon"><!--Иконка вкладки-->
+	<link rel="stylesheet" href="style.css" type="text/css" media="all"><!--Подключение css--> 
+</head>
+<body>
+
+	<!--Шапка сайта-->
+	<header>
+		<div class="gradient"></div>
+		<div class="container">
+			<div class="content">
+				<h1>Доставка эко-продуктов</h1><!--Заголовок шапки-->
+				<p>Быстро доставим качественные и&nbsp;экологичные продукты от&nbsp;местных производителей</p><!--Текст шапки-->
+			</div>
+			<!--Стрелочка, при нажатии на которую страница прокручивается вниз-->
+			<div class="link"><a><svg class="arrow-svg"><g><path d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z"></path></g></svg></a></div>
+		</div>
+	</header>
+
+	<!--Основная часть сайта-->
+	<main id="main">
+
+		<!--Меню при ширине экрана меньше 983px-->
+		<div class="menu_mobile">
+			<div class="burger">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+
+		<!--Меню-->
+		<nav>
+			<div class="logo"><a data-id="promo" class="nav_link"><img src="img/logo.png"></a></div><!--Логотип в меню-->
+			<div class="menu">
+				<ul><!--Пункты меню-->
+					<li style="display:none;"><a class="active"></a></li>
+					<li><a data-id="fruit" class="nav_link">Фрукты и ягоды</a></li>
+					<li><a data-id="vegetables" class="nav_link">Овощи</a></li>
+					<li><a data-id="meat" class="nav_link">Мясо и птица</a></li>
+					<li><a data-id="fish" class="nav_link">Рыба</a></li>
+					<li><a data-id="dairy" class="nav_link">Молочные продукты</a></li>
+					<li><a data-id="eggs" class="nav_link">Яйца</a></li>
+					<li><a data-id="recipe" class="nav_link">Рецепты</a></li>
+					<li><a data-id="contacts" class="nav_link">Контакты</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<!--Текст, рассказывающий о назначении сайта-->
+		<div data-section="promo" id="promo" class="promo">
+			<div class="container">
+				<p class="promo-text">Хотите правильно и&nbsp;полезно питаться, но&nbsp;считаете, что экологичные и&nbsp;качественные продукты дорогие? Думаете, что полезные блюда сложно готовить? <strong>Устали от&nbsp;еды из&nbsp;супермаркета?</strong></p>
+				<p class="promo-text">На&nbsp;нашем сайте вы&nbsp;найдёте продукты от <strong>местных производителей</strong>, а&nbsp;также <strong>простые рецепты</strong> по&nbsp;приготовлению вкусных и&nbsp;полезных блюд.</p>
+				<p class="promo-text"><strong>Качественные продукты&nbsp;— залог счастливой, долгой и&nbsp;здоровой жизни!</strong></p>
+			</div>
+		</div>
+
+		<!--Блок с товарами-->
+		<div class="sections_block"></div>
+
+		<!--Корзина с товарами-->
+		<div class="shopping_cart">
+
+			<div class="shopping_cart_area"></div><!--Область вокруг корзины, при нажатии на которую, она закрывается-->
+			<div class="shopping_cart_body">
+				<h3>Ваш заказ</h3>
+				<div class="shopping_cart_products">
+					<!--Товары-->
+				</div>
+				<div class="shopping_cart_total"><!--Итоговая сумма заказа-->
+					<span>Сумма:</span>
+					<span class="total_price"></span>
+				</div>
+				<form><!--Форма для оформления заказа-->
+					<label for="name">Имя</label>
+					<input type="text" id="name" name="name" class="req">
+					<label for="adress">Адрес</label>
+					<input type="text" id="adress" name="adress" placeholder="Область, город, улица, дом (, квартира)" class="req">
+					<label for="email">Email</label>
+					<input type="text" id="email" name="email" class="req">
+					<label for="phone">Телефон</label>
+					<input type="text" id="phone" name="phone" placeholder="+7(__) ___" class="req">
+					<label for="comment">Комментарий к заказу</label>
+					<textarea id="comment" name="comment"></textarea>
+
+					<!--Блок ошибок при заполнении формы-->
+					<div class="errorbox"> 
+						<div class="errorbox_text">
+							<p class="error_req">Пожалуйста, заполните все обязательные поля</p>
+							<p class="error_email">Укажите, пожалуйста, корректный email</p>
+							<p class="error_phone">Укажите, пожалуйста, корректный номер телефона</p>
+							<p class="error_length">Уменьшите, пожалуйста, длину строк</p>
+						</div>
+					</div>
+						
+					<!--Кнопка для отправки заказа-->
+					<input type="submit" class="shopping_cart_button" value="Заказать">
+				</form>
+			</div>
+			<div class="close_shopping_cart">&#10006</div><!--Знак Х для закрытия корзины-->
+
+		</div>
+
+		<!--Иконка корзины товаров, которая появляется если в корзине есть товары-->
+		<div class="carticon">
+			<div class="carticon_text"></div>
+			<div class="carticon_wrapper"> 
+				<div class="carticon_img"><svg style="stroke:#000000;" viewBox="0 0 64 64"><path fill="none" stroke-width="2" stroke-miterlimit="10" d="M44 18h10v45H10V18h10z"></path><path fill="none" stroke-width="2" stroke-miterlimit="10" d="M22 24V11c0-5.523 4.477-10 10-10s10 4.477 10 10v13"></path></svg></div>
+				<div class="carticon_counter"></div><!--Количество товаров в корзине-->
+			</div>
+		</div>
+
+	</main>
+	
+	<!--Подвал сайта, где находятся контакты и другая дополнительная информация-->
+	<footer data-section="contacts" id="contacts">
+		<div class="container">
+			<h2>Контакты</h2>
+			<p class="contacts_text">Заказы доставляем в течение суток! Вы можете оплатить заказ на&nbsp;сайте, либо через курьера.</p>
+			<!--Элемент, в котором находится информация о контактах-->
+			<div class="footer_item">
+				<img src="img/phone.svg">
+				<h3>Контакты</h3>
+				<p>+1 123 456 78 90</p>
+				<p>hello@company.com</p>
+			</div>
+			<!--Элемент, в котором находится информация о времени работы-->
+			<div class="footer_item">
+				<img src="img/clock.svg">
+				<h3>Время работы</h3>
+				<p>Ежедневно</p>
+				<p>24 часа</p>
+			</div>
+			<!--Элемент, в котором находится информация о соцсетях-->
+			<div class="footer_item">
+				<img src="img/people.svg">
+				<h3>Соцсети</h3>
+				<p><a>Facebook</a></p>
+				<p><a>VKontakte</a></p>
+				<p><a>Instagram</a></p>
+			</div>
+		</div>	
+	</footer>
+
+	<script src="script_load.js"></script><!--Подключение javascript-->
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
