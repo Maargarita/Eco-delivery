@@ -18,7 +18,7 @@ try{
 	//Загрузка другого js файла после загругзки окна
 	window.onload = function(){
 		addScript('script.js');
-	}
+	};
 
 	//Загрузка категорий товаров на страницу
 	function loadCategories(){
@@ -30,7 +30,7 @@ try{
 
 		request_categories.onload = function(){
 
-			if(request_categories.status == 0 || request_categories.status >= 200 && request_categories.status < 400){
+			if(request_categories.status === 0 || request_categories.status >= 200 && request_categories.status < 400){
 
 				//Получение катигорий товаров из запроса
 				let categories = "",
@@ -58,7 +58,7 @@ try{
 			}else { //Произошла ошибка
       			console.log(request_categories.responseText);
     		}
-		}
+		};
 	}
 
 	var productsLoadData;
@@ -73,7 +73,7 @@ try{
 
 		request_products.onload = function(){
 
-			if(request_products.status == 0 || request_products.status >= 200 && request_products.status < 400){
+			if(request_products.status === 0 || request_products.status >= 200 && request_products.status < 400){
 			
 				//Получение товаров из запроса
 				let products = "";
@@ -119,7 +119,7 @@ try{
 			}else { //Произошла ошибка
     	  		console.log(request_products.responseText);
     		}
-		}
+		};
 	}
 
 }catch (e){

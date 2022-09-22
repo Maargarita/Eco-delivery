@@ -1,12 +1,12 @@
 <?php
 	
 	$servername = "localhost";
-	$username = "root";
-	$password = "";
+	$username = "f920429h_eco";
+	$password = "HgJE!xY!q8gvRaP";
 
 	try{
 		//Соединение с базой данных
-		$conn = new PDO("mysql:host=$servername; dbname=eco_delivery_shop", $username, $password);
+		$conn = new PDO("mysql:host=$servername; dbname=f920429h_eco", $username, $password);
 	
 		//Присвоение переменным значений из formData
 		$full_name = $_POST['name'];
